@@ -4,7 +4,7 @@ KangoAPI.onReady(function() {
 
 	kango.console.log('Loading popup.');
 
-	if (kango.storage.getItem('do_manager_client_id') == null || kango.storage.getItem('do_manager_api_key') == null)
+	if (kango.storage.getItem('do_manager_auth_token') == null)
 	{
 		kango.ui.optionsPage.open();
 

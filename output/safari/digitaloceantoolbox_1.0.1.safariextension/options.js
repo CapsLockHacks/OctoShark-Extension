@@ -15,7 +15,7 @@ KangoAPI.onReady(function() {
 		        async: false,
 		        contentType: 'json',
 		        headers: {
-		                'Authorization': 'Bearer ' + 'c520ce5ad88b5b9b12efff63a887c99700adaf31baf96a276a2f5d5f4f17ab9c'
+		                'Authorization': 'Bearer ' + $("#do_auth_token").val()
 		        }
 			};
 
