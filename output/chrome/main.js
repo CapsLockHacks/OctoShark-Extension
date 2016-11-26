@@ -70,15 +70,17 @@
 		if(request.status == 200 && request.response != null) 
 		{
 			kango.console.log('Cache Sizes: API returned OK!');
+			
 			$.each(request.response.sizes, function(row, object) 
 			{
-				kango.storage.setItem("sizes_id_"+object.id+"_name", object.name);
-				kango.storage.setItem("sizes_id_"+object.id+"_slug", object.slug);
-				kango.storage.setItem("sizes_id_"+object.id+"_memory", object.memory);
-				kango.storage.setItem("sizes_id_"+object.id+"_cpu", object.cpu);
-				kango.storage.setItem("sizes_id_"+object.id+"_disk", object.disk);
-				kango.storage.setItem("sizes_id_"+object.id+"_cost_per_hour", object.cost_per_hour);
-				kango.storage.setItem("sizes_id_"+object.id+"_cost_per_month", object.cost_per_month);				
+				//kango.console.log(object);
+				kango.storage.setItem("sizes_id_"+object.size_slug+"_name", object.name);
+				kango.storage.setItem("sizes_id_"+object.size_slug+"_slug", object.slug);
+				kango.storage.setItem("sizes_id_"+object.size_slug+"_memory", object.memory);
+				kango.storage.setItem("sizes_id_"+object.size_slug+"_cpu", object.cpu);
+				kango.storage.setItem("sizes_id_"+object.size_slug+"_disk", object.disk);
+				kango.storage.setItem("sizes_id_"+object.size_slug+"_cost_per_hour", object.price_hourly);
+				kango.storage.setItem("sizes_id_"+object.size_slug+"_cost_per_month", object.price_monthly);				
 			});	
 		}
 		else

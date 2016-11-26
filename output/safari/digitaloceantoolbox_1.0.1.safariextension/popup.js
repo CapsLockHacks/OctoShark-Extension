@@ -36,17 +36,19 @@ KangoAPI.onReady(function() {
 
 				$.each(request.response.droplets, function(row, object) 
 				{
+					//kango.console.log(this);
 					var droplet_id = object.id;
 					object.region_name = kango.storage.getItem('regions_id_'+object.region_id+'_name');
 					object.region_slug = kango.storage.getItem('regions_id_'+object.region_id+'_slug');
 
-					object.size_name = kango.storage.getItem('sizes_id_'+object.size_id+'_name');	
-					object.size_slug = kango.storage.getItem('sizes_id_'+object.size_id+'_slug');	
-					object.size_mem = kango.storage.getItem('sizes_id_'+object.size_id+'_memory');	
-					object.size_cpu = kango.storage.getItem('sizes_id_'+object.size_id+'_cpu');	
-					object.size_disk = kango.storage.getItem('sizes_id_'+object.size_id+'_disk');	
+					object.size_name = kango.storage.getItem('sizes_id_'+object.size_slug+'_name');	
+					object.size_slug = kango.storage.getItem('sizes_id_'+object.size_slug+'_slug');	
+					object.size_mem = kango.storage.getItem('sizes_id_'+object.size_slug+'_memory');	
+					object.size_cpu = kango.storage.getItem('sizes_id_'+object.size_slug+'_cpu');	
+					object.size_disk = kango.storage.getItem('sizes_id_'+object.size_slug+'_disk');	
 					object.size_cost_per_hour = kango.storage.getItem('sizes_id_'+object.size_id+'_cost_per_hour');	
-					object.size_cost_per_month = kango.storage.getItem('sizes_id_'+object.size_id+'_cost_per_month');	
+					object.size_cost_per_month = this.size.price_monthly;
+					//kango.console.log(object);
 
 					estimated_total_cost_per_month = (estimated_total_cost_per_month + parseInt(object.size_cost_per_month));
 
@@ -61,8 +63,6 @@ KangoAPI.onReady(function() {
 					{
 						object.show_image_info = false;
 					}
-
-					kango.console.log(object);
 
 					$('#do_droplets_ul').html($('#do_droplets_ul').html()+'<li id="do_ul_'+droplet_id+'"></li>');
 					$('#do_droplets_info').html($('#do_droplets_info').html()+'<div class="tab-pane" id="do_id_'+droplet_id+'"></div>');
