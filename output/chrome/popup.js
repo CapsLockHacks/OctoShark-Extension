@@ -1,4 +1,48 @@
+
+
 KangoAPI.onReady(function() {
+
+	$('#submit').click(function(event)
+	{
+		var api_success = false;
+
+		var details = {
+	        method: 'GET',
+	        url: 'http://23.99.112.114:5000/create',
+	        async: false,
+	        contentType: 'json',
+	        params:{
+	        	'name':$("#name").val(),
+	        	'region':$("#region").val(),
+	        	'size':$("#size").val(),
+	        	'giturl': kango.browser.tabs.getCurrent(function(tab) {return tab.getUrl();})
+	        },
+	        headers: {
+	                'Authorization': 'Bearer ' + $("#do_auth_token").val()
+	        }
+		};
+
+		kango.xhr.send(details, function(request) {
+			console.log(request);
+			if(request.status == 200 && request.response != null) 
+			{
+				api_success = true;
+			}
+			else
+			{
+				api_success = false;
+			}
+		});
+
+		if (api_success)
+		{
+			kango.console.log('pass');
+		}
+		else
+		{
+			kango.console.log('fail');
+		}
+	});		
 
 	var estimated_total_cost_per_month = 0;
 
