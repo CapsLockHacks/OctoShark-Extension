@@ -1,0 +1,26 @@
+{
+    "description": "Manage your DigitalOcean droplets.", 
+    "creator": "DigitalOcean Toolbox", 
+    "framework_version": "1.8.0 3dc957b83b36", 
+    "package_id": "kango-bc90ff89-902e-45e8-9dc2-df2ec913afc6", 
+    "background_scripts": [
+        "jquery-1.11.1.min.js", 
+        "main.js"
+    ], 
+    "homepage_url": "https://www.digitalocean.com/", 
+    "version": "1.0.1", 
+    "options_page": "options.html", 
+    "framework_package_id": "dev", 
+    "browser_button": {
+        "caption": "DigitalOcean Toolbox", 
+        "icon": "icons/button.png", 
+        "popup": {
+            "url": "popup.html", 
+            "width": 700, 
+            "height": 390
+        }, 
+        "tooltipText": "DigitalOcean Toolbox"
+    }, 
+    "id": "{BC90FF89-902E-45E8-9DC2-DF2EC913AFC6}", 
+    "name": "DigitalOcean Toolbox"
+}

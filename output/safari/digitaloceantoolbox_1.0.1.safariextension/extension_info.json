@@ -1,0 +1,26 @@
+{
+    "description": "Manage your DigitalOcean droplets.", 
+    "creator": "DigitalOcean Toolbox", 
+    "framework_version": "1.8.0 3dc957b83b36", 
+    "developer_id": "YOUR_SAFARI_DEVELOPER_ID", 
+    "background_scripts": [
+        "jquery-1.11.1.min.js", 
+        "main.js"
+    ], 
+    "homepage_url": "https://www.digitalocean.com/", 
+    "version": "1.0.1", 
+    "options_page": "options.html", 
+    "framework_package_id": "dev", 
+    "browser_button": {
+        "caption": "DigitalOcean Toolbox", 
+        "icon": "icons/button.png", 
+        "popup": {
+            "url": "popup.html", 
+            "width": 700, 
+            "height": 390
+        }, 
+        "tooltipText": "DigitalOcean Toolbox"
+    }, 
+    "id": "com.kangoextensions.digitaloceanmanager", 
+    "name": "DigitalOcean Toolbox"
+}
