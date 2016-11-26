@@ -94,10 +94,11 @@ KangoAPI.onReady(function() {
 						if (confirm("Are you sure you wish to Restart this droplet?"))
 						{
 							var details = {
-						        method: 'GET',
+						        method: 'POST',
 						        url: 'https://api.digitalocean.com/v2/droplets/'+object.id+'/actions',
 						        async: true,
-						        contentType: 'json'
+						        contentType: 'json',
+						        params: {"type":"reboot"},
 						        headers: {
 						                'Authorization': 'Bearer ' + kango.storage.getItem('do_manager_auth_token')
 						        }
@@ -106,11 +107,8 @@ KangoAPI.onReady(function() {
 							kango.xhr.send(details, function(request) {
 								if(request.status == 200 && request.response != null) 
 								{
-									var info = request.response;
-									if (info.status == "OK") 
-									{
-										alert('Successfully sent Restart signal.  This panel may take a few minutes to reflect status.');
-									}
+									alert('Successfully sent Restart signal.  This panel may take a few minutes to reflect status.');
+
 								}
 							});
 						}
@@ -119,20 +117,20 @@ KangoAPI.onReady(function() {
 						if (confirm("Are you sure you wish to Power OFF this droplet?"))
 						{
 							var details = {
-						        method: 'GET',
-						        url: 'https://api.digitalocean.com/droplets/'+object.id+'/power_off/?client_id='+kango.storage.getItem('do_manager_client_id')+'&api_key='+kango.storage.getItem('do_manager_api_key'),
+						        method: 'POST',
+						        url: 'https://api.digitalocean.com/v2/droplets/'+object.id+'/actions',
 						        async: true,
-						        contentType: 'json'
+						        contentType: 'json',
+						        params: {"type":"power_off"},
+						        headers: {
+						                'Authorization': 'Bearer ' + kango.storage.getItem('do_manager_auth_token')
+						        }
 							};
 
 							kango.xhr.send(details, function(request) {
 								if(request.status == 200 && request.response != null) 
 								{
-									var info = request.response;
-									if (info.status == "OK") 
-									{
-										alert('Successfully sent Power OFF signal.  This panel may take a few minutes to reflect status.');
-									}
+									alert('Successfully sent Power OFF signal.  This panel may take a few minutes to reflect status.');
 								}
 							});	
 						}
@@ -141,20 +139,20 @@ KangoAPI.onReady(function() {
 						if (confirm("Are you sure you wish to Power ON this droplet?"))
 						{
 							var details = {
-						        method: 'GET',
-						        url: 'https://api.digitalocean.com/droplets/'+object.id+'/power_on/?client_id='+kango.storage.getItem('do_manager_client_id')+'&api_key='+kango.storage.getItem('do_manager_api_key'),
+						        method: 'POST',
+						        url: 'https://api.digitalocean.com/v2/droplets/'+object.id+'/actions',
 						        async: true,
-						        contentType: 'json'
+						        contentType: 'json',
+						        params: {"type":"power_on"},
+						        headers: {
+						                'Authorization': 'Bearer ' + kango.storage.getItem('do_manager_auth_token')
+						        }
 							};
 
 							kango.xhr.send(details, function(request) {
 								if(request.status == 200 && request.response != null) 
 								{
-									var info = request.response;
-									if (info.status == "OK") 
-									{
-										alert('Successfully sent Power ON signal.  This panel may take a few minutes to reflect status.');
-									}
+									alert('Successfully sent Power ON signal.  This panel may take a few minutes to reflect status.');
 								}
 							});	
 						}

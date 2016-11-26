@@ -15,7 +15,7 @@
 		if(request.status == 200 && request.response != null) 
 		{
 			kango.console.log('Cache Regions: API returned OK!');
-			$.each(info.regions, function(row, object) 
+			$.each(request.response.regions, function(row, object) 
 			{
 				kango.storage.setItem("regions_id_"+object.id+"_name", object.name);
 				kango.storage.setItem("regions_id_"+object.id+"_slug", object.slug);
@@ -42,7 +42,7 @@
 		if(request.status == 200 && request.response != null) 
 		{
 			kango.console.log('Cache Images: API returned OK!');
-			$.each(info.images, function(row, object) 
+			$.each(request.response.images, function(row, object) 
 			{
 				kango.storage.setItem("images_id_"+object.id+"_name", object.name);
 				kango.storage.setItem("images_id_"+object.id+"_distribution", object.name);
@@ -70,7 +70,7 @@
 		if(request.status == 200 && request.response != null) 
 		{
 			kango.console.log('Cache Sizes: API returned OK!');
-			$.each(info.sizes, function(row, object) 
+			$.each(request.response.sizes, function(row, object) 
 			{
 				kango.storage.setItem("sizes_id_"+object.id+"_name", object.name);
 				kango.storage.setItem("sizes_id_"+object.id+"_slug", object.slug);
