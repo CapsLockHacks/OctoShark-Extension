@@ -2,6 +2,10 @@
 
 KangoAPI.onReady(function() {
 
+    if (kango.storage.getItem("do_manager_auth_token")) {
+        $("#token").val(kango.storage.getItem("do_manager_auth_token"));
+    }
+
 	$('#submit').click(function(event)
 	{
 		var api_success = false;
