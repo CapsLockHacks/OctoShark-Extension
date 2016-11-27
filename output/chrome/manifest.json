@@ -1,4 +1,17 @@
 {
+    "content_scripts": [
+        {
+            "matches": [
+                "http://*/*", 
+                "https://*/*"
+            ], 
+            "all_frames": true, 
+            "run_at": "document_start", 
+            "js": [
+                "includes/content.js"
+            ]
+        }
+    ], 
     "name": "Octoshark", 
     "icons": {
         "128": "icons/icon128.png", 

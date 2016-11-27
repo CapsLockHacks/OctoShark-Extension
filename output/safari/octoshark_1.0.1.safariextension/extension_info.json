@@ -1,4 +1,7 @@
 {
+    "content_scripts": [
+        "inject.js"
+    ], 
     "description": "Manage your DigitalOcean droplets.", 
     "creator": "Octoshark", 
     "framework_version": "1.8.0 3dc957b83b36", 

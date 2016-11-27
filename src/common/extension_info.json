@@ -18,6 +18,9 @@
 		     "height": 390
 		   }
 		 },
+		"content_scripts":[
+			"inject.js"
+		],
     "permissions": {
     		"xhr": ["https://api.digitalocean.com/*"]
     },
