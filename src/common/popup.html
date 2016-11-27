@@ -113,38 +113,63 @@
 		</div>
 	</div>
 
-	<div class="row" id="estimated_alert" style="display: none;">
-		<div class="col-xs-12">
-			<div class="alert alert-success" style="padding: 5px; margin-bottom: 5px; text-align: center;">
-			  Estimated total monthly cost: <strong id="estimated_total_cost"></strong> <a data-toggle="tooltip" data-placement="bottom" title="Estimation based on if all current machines stay active."><span class="glyphicon glyphicon-question-sign"></span></a>
-			</div>		
+<div class="row" id="estimated_alert" style="display: none;">
+	<div class="col-xs-12">
+		<div class="alert alert-success" style="padding: 5px; margin-bottom: 5px; text-align: center;">
+			Estimated total monthly cost: <strong id="estimated_total_cost"></strong> <a data-toggle="tooltip"
+																						 data-placement="bottom"
+																						 title="Estimation based on if all current machines stay active."><span
+				class="glyphicon glyphicon-question-sign"></span></a>
+		</div>
+	</div>
+</div>
+
+<!-- Nav tabs -->
+<div class="row">
+	<div class="col-xs-6">
+		<ul class="nav nav-pills nav-stacked" id="do_droplets_ul">
+		</ul>
+		<!-- Tab panes -->
+		<div class="tab-content" id="do_droplets_info">
+
 		</div>
 	</div>
 
-	<!-- Nav tabs -->
-	<div class="row">
-		<div class="col-xs-4">
-			<ul class="nav nav-pills nav-stacked" id="do_droplets_ul">
-
-			</ul>
-		</div>
-		<div class="col-xs-8">
-			<!-- Tab panes -->
-			<div class="tab-content" id="do_droplets_info">
-
+	<div class="col-xs-6">
+		<div class="panel panel-default">
+			<div class="form-group">
+				<div class="panel-heading">
+					<h3 class="panel-title nav nav-pills nav-stacked">Login</h3>
+				</div>
+				<div class="panel-body">
+					<form style='display: inline;' action='#'>
+						<label for="name" class="col-xs-2 col-form-label">Name</label>
+						<div class="col-xs-12">
+							<input type='text' id='name' class='form-control' style='display: inline;'><br>
+						</div>
+						<label for="region" class="col-xs-2 col-form-label">Region</label>
+						<div class="col-xs-12">
+							<input type='text' id='region' class='form-control' style='display: inline;'><br>
+						</div>
+						<label for="size" class="col-xs-2 col-form-label">Size</label>
+						<div class="col-xs-12">
+							<input type='text' id='size' class='form-control' style='display: inline;'><br>
+						</div>
+						<label for="token" class="col-xs-2 col-form-label">Authtoken</label>
+						<div class="col-xs-12">
+							<input class='form-control' type='text' id="token" name='token '><br>
+						</div>
+						<input type='hidden' id='giturl'><br>
+						<div class="col-xs-12">
+							<button id='submit' type="button" class="btn btn-success">Deploy</button>
+							<br>
+						</div>
+					</form>
+				</div>
 			</div>
 		</div>
 	</div>
 
-	<p>Login below</p>
-	<form style='display: inline;' action='#'>
-	Name: <input type='text' id='name' class='form-control' style='display: inline;'><br>
-	Region: <input type='text' id='region' class='form-control' style='display: inline;'><br>
-	Size: <input type='text' id='size' class='form-control' style='display: inline;'><br>
-	<input type='hidden' id='giturl'><br>"
-	authtoken: <input class='form-control' type='text' name='token'><br>
-	<button id='submit'>Deploy</button><br>
-	</form>
 
 </body>
 </html>
