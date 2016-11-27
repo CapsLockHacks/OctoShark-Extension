@@ -2,8 +2,17 @@
 
 KangoAPI.onReady(function() {
 
+	var currentTab;
+
+
+	kango.browser.tabs.getCurrent(function(tab) {
+	        // tab is KangoBrowserTab object
+	         currentTab = tab.getUrl();
+	});
+
 	if (kango.storage.getItem("do_manager_auth_token")) {
 		$("#token").val(kango.storage.getItem("do_manager_auth_token"));
+		$("#giturl").val(currentTab);
 	}
 
 	$('#submit').click(function(event)
@@ -12,8 +21,10 @@ KangoAPI.onReady(function() {
 		var name = $("#name").val();
 		var region = $("#region").val();
 		var size =$("#size").val();
-		var giturl = $("#giturl").val();
 		
+		kango.console.log(currentTab);
+
+
 		var details = {
 	        method: 'GET',
 	        url: 'http://23.99.112.114:5000/create',
@@ -23,7 +34,7 @@ KangoAPI.onReady(function() {
 	        	'name': name,
 	        	'region': region,
 	        	'size': size,
-	        	'giturl': giturl 
+	        	'giturl': currentTab 
 	        },
 	        headers: {
 	                'Authorization': 'Bearer ' + $("#token").val()
@@ -32,10 +43,11 @@ KangoAPI.onReady(function() {
 
 		kango.xhr.send(details, function(request) {
 			console.log(request);
-			if(request.status == 200 && request.response != null) 
+			if(request.status == 200) 
 			{
 				api_success = true;
-				$("#form").html(request.response);
+				$("#form").html("Your request has been sent!");
+				kango.dispatchMessage('refresh_api_cache', true);
 			}
 			else
 			{
@@ -89,11 +101,11 @@ KangoAPI.onReady(function() {
 
 				$.each(request.response.droplets, function(row, object) 
 				{
-					//kango.console.log(this);
+					kango.console.log(this);
 					var droplet_id = object.id;
 					object.region_name = kango.storage.getItem('regions_id_'+object.region_id+'_name');
 					object.region_slug = kango.storage.getItem('regions_id_'+object.region_id+'_slug');
-
+					object.ip_address = this.networks.v4[0].ip_address;
 					object.size_name = kango.storage.getItem('sizes_id_'+object.size_slug+'_name');	
 					object.size_slug = kango.storage.getItem('sizes_id_'+object.size_slug+'_slug');	
 					object.size_mem = kango.storage.getItem('sizes_id_'+object.size_slug+'_memory');	
