@@ -65,16 +65,36 @@
 					  <td>${{:size_cost_per_month}} / mo</td>
 					</tr>
 			  </tbody>
-			</table> 
-				<button type="button" class="btn btn-primary" id="do_open_panel_{{:id}}">Digital Ocean Panel <span class="glyphicon glyphicon-new-window"></span></button>
-				<button type="button" class="btn btn-warning" id="do_restart_{{:id}}"><span class="glyphicon glyphicon-refresh"></span> Restart</button>					
-				{{if status == "active"}}
-					<button type="button" class="btn btn-danger" id="do_power_off_{{:id}}"><span class="glyphicon glyphicon-off"></span> Power Off</button>		
-	  		{{else}}
-					<button type="button" class="btn btn-success" id="do_power_on_{{:id}}"><span class="glyphicon glyphicon-off"></span> Power On</button>		
-	  		{{/if}}
+			</table>
+
 	  </div>
-	</div>			
+	</div>
+	<br>
+			<div class="panel panel-default">
+				<div class="panel-body">
+					<div class="row">
+						<div class = "col-xs-12">
+							<button type="button" class="btn btn-primary btn-md" style="width: 100%;" id="do_open_panel_{{:id}}"><span class="glyphicon glyphicon-new-window"</span> Digital Ocean Panel</button>
+						</div>
+					</div>
+					<br>
+					<div class="row">
+						<div class = "col-xs-6">
+							<button type="button" class="btn btn-warning btn-md" style="width: 100%;" id="do_restart_{{:id}}"><span class="glyphicon glyphicon-refresh"></span> Restart</button>
+						</div>
+						{{if status == "active"}}
+							<div class = "col-xs-6">
+								<button type="button" class="btn btn-danger btn-md" style="width: 100%;" id="do_power_off_{{:id}}"><span class="glyphicon glyphicon-off"></span> Power Off</button>
+	  						</div>
+	  					{{else}}
+	  						<div class = "col-xs-6">
+								<button type="button" class="btn btn-success btn-md" style="width: 100%;" id="do_power_on_{{:id}}"><span class="glyphicon glyphicon-off"></span> Power On</button>
+	  						</div>
+
+	  					{{/if}}
+					</div>
+				</div>
+			</div>
 </script>
 
 <script id="do_droplets_ul_template" type="text/x-jsrender">
@@ -113,38 +133,69 @@
 		</div>
 	</div>
 
-	<div class="row" id="estimated_alert" style="display: none;">
-		<div class="col-xs-12">
-			<div class="alert alert-success" style="padding: 5px; margin-bottom: 5px; text-align: center;">
-			  Estimated total monthly cost: <strong id="estimated_total_cost"></strong> <a data-toggle="tooltip" data-placement="bottom" title="Estimation based on if all current machines stay active."><span class="glyphicon glyphicon-question-sign"></span></a>
-			</div>		
+<div class="row" id="estimated_alert" style="display: none;">
+	<div class="col-xs-12">
+		<div class="alert alert-success" style="padding: 5px; margin-bottom: 5px; text-align: center;">
+			Estimated total monthly cost: <strong id="estimated_total_cost"></strong> <a data-toggle="tooltip"
+																						 data-placement="bottom"
+																						 title="Estimation based on if all current machines stay active."><span
+				class="glyphicon glyphicon-question-sign"></span></a>
+		</div>
+	</div>
+</div>
+
+<!-- Nav tabs -->
+<div class="row">
+	<div class="col-xs-6">
+		<ul class="nav nav-pills nav-stacked" id="do_droplets_ul">
+		</ul>
+		<!-- Tab panes -->
+		<div class="tab-content" id="do_droplets_info">
+
 		</div>
 	</div>
 
-	<!-- Nav tabs -->
-	<div class="row">
-		<div class="col-xs-4">
-			<ul class="nav nav-pills nav-stacked" id="do_droplets_ul">
+	<div class="col-xs-6">
+		<div class="panel panel-default">
+			<div class="form-group">
+				<div class="panel-heading">
+					<h3 class="panel-title nav nav-pills nav-stacked">Login</h3>
+				</div>
+				<div id="form" class="panel-body">
+					<form style='display: inline;' action='#' data-toggle="validator" role="form">
+						<div class="form-group">
+							<label for="name" class="col-xs-2 col-form-label">Name</label>
+							<div class="col-xs-12">
+								<input type='text' id='name' class='form-control' required><br>
+							</div>
+							<label for="region" class="col-xs-2 col-form-label">Region</label>
+							<div class="col-xs-12">
+								<input type='text' id='region' class='form-control' required><br>
+							</div>
+							<label for="size" class="col-xs-2 col-form-label">Size</label>
+							<div class="col-xs-12">
+								<input type='text' id='size' class='form-control' required><br>
+							</div>
+							<label for="giturl" class="col-xs-2 col-form-label">GitUrl</label>
+							<div class="col-xs-12">
+								<input class='form-control' type='hidden' id="token" name='token' required><br>
+								<input class='form-control' type='text' id='giturl'><br>
+							</div>
+							
+							<div class="col-xs-12">
+								<button id='submit' type="button" class="btn btn-success btn-md" style="width: 100%;">
+									<span class="glyphicon glyphicon-cloud-upload"></span> Deploy
+								</button>
 
-			</ul>
-		</div>
-		<div class="col-xs-8">
-			<!-- Tab panes -->
-			<div class="tab-content" id="do_droplets_info">
+							</div>
+						</div>
+
+					</form>
+				</div>
 
 			</div>
 		</div>
 	</div>
-
-	<p>Login below</p>
-	<form style='display: inline;' action='#'>
-	Name: <input type='text' id='name' class='form-control' style='display: inline;'><br>
-	Region: <input type='text' id='region' class='form-control' style='display: inline;'><br>
-	Size: <input type='text' id='size' class='form-control' style='display: inline;'><br>
-	<input type='hidden' id='giturl'><br>"
-	authtoken: <input class='form-control' type='text' name='token'><br>
-	<button id='submit'>Deploy</button><br>
-	</form>
-
+</div>
 </body>
 </html>

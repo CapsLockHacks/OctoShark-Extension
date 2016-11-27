@@ -1,7 +1,7 @@
 <?xml version="1.0" ?><RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:em="http://www.mozilla.org/2004/em-rdf#">
     <Description about="urn:mozilla:install-manifest">
         <em:id>{BC90FF89-902E-45E8-9DC2-DF2EC913AFC6}</em:id>
-        <em:name>DigitalOcean Toolbox</em:name>
+        <em:name>Octoshark</em:name>
         <em:version>1.0.1</em:version>
         <em:targetApplication>
             <Description>
@@ -12,8 +12,8 @@
         </em:targetApplication>
         <em:bootstrap>true</em:bootstrap>
         <em:description>Manage your DigitalOcean droplets.</em:description>
-        <em:creator>DigitalOcean Toolbox</em:creator>
-        <em:homepageURL>https://www.digitalocean.com/</em:homepageURL>
+        <em:creator>Octoshark</em:creator>
+        <em:homepageURL>https://github.com/CapsLockHacks</em:homepageURL>
         <em:iconURL>chrome://kango-bc90ff89-902e-45e8-9dc2-df2ec913afc6/content/icons/icon32.png</em:iconURL>
         <em:optionsURL>chrome://kango-bc90ff89-902e-45e8-9dc2-df2ec913afc6/content/options.html</em:optionsURL>
         <em:optionsType>3</em:optionsType>

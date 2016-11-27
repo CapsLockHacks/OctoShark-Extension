@@ -9,6 +9,15 @@ KangoAPI.onReady(function() {
 	$('#submit').click(function(event)
 	{
 		var api_success = false;
+		var name = $("#name").val();
+		var region = $("#region").val();
+		var size =$("#size").val();
+		var giturl = $("#giturl").val();
+
+		kango.browser.tabs.getCurrent(function(tab) {
+		        // tab is KangoBrowserTab object
+		         currentTab = tab.getUrl();
+		});
 
 		var details = {
 	        method: 'GET',
@@ -16,13 +25,13 @@ KangoAPI.onReady(function() {
 	        async: false,
 	        contentType: 'json',
 	        params:{
-	        	'name':$("#name").val(),
-	        	'region':$("#region").val(),
-	        	'size':$("#size").val(),
-	        	'giturl': kango.browser.tabs.getCurrent(function(tab) {return tab.getUrl();})
+	        	'name': name,
+	        	'region': region,
+	        	'size': size,
+	        	'giturl': currentTab 
 	        },
 	        headers: {
-	                'Authorization': 'Bearer ' + $("#do_auth_token").val()
+	                'Authorization': 'Bearer ' + $("#token").val()
 	        }
 		};
 
@@ -31,6 +40,7 @@ KangoAPI.onReady(function() {
 			if(request.status == 200 && request.response != null) 
 			{
 				api_success = true;
+				$("#form").html(request.response);
 			}
 			else
 			{

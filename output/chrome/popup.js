@@ -2,27 +2,31 @@
 
 KangoAPI.onReady(function() {
 
-    if (kango.storage.getItem("do_manager_auth_token")) {
-        $("#token").val(kango.storage.getItem("do_manager_auth_token"));
-    }
+	if (kango.storage.getItem("do_manager_auth_token")) {
+		$("#token").val(kango.storage.getItem("do_manager_auth_token"));
+	}
 
 	$('#submit').click(function(event)
 	{
 		var api_success = false;
-
+		var name = $("#name").val();
+		var region = $("#region").val();
+		var size =$("#size").val();
+		var giturl = $("#giturl").val();
+		
 		var details = {
 	        method: 'GET',
 	        url: 'http://23.99.112.114:5000/create',
 	        async: false,
 	        contentType: 'json',
 	        params:{
-	        	'name':$("#name").val(),
-	        	'region':$("#region").val(),
-	        	'size':$("#size").val(),
-	        	'giturl': kango.browser.tabs.getCurrent(function(tab) {return tab.getUrl();})
+	        	'name': name,
+	        	'region': region,
+	        	'size': size,
+	        	'giturl': giturl 
 	        },
 	        headers: {
-	                'Authorization': 'Bearer ' + $("#do_auth_token").val()
+	                'Authorization': 'Bearer ' + $("#token").val()
 	        }
 		};
 
@@ -31,6 +35,7 @@ KangoAPI.onReady(function() {
 			if(request.status == 200 && request.response != null) 
 			{
 				api_success = true;
+				$("#form").html(request.response);
 			}
 			else
 			{

@@ -1,25 +1,25 @@
 {
-    "description": "Manage your DigitalOcean droplets.",
-  "creator": "Octoshark",
+    "description": "Manage your DigitalOcean droplets.", 
+    "creator": "Octoshark", 
     "framework_version": "1.8.0 3dc957b83b36", 
     "background_scripts": [
         "jquery-1.11.1.min.js", 
         "main.js"
-    ],
-  "homepage_url": "https://github.com/CapsLockHacks",
+    ], 
+    "homepage_url": "https://github.com/CapsLockHacks", 
     "version": "1.0.1", 
     "options_page": "options.html", 
     "framework_package_id": "dev", 
     "browser_button": {
-      "caption": "Octoshark",
+        "caption": "Octoshark", 
         "icon": "icons/button.png", 
         "popup": {
             "url": "popup.html", 
             "width": 700, 
             "height": 390
-        },
-      "tooltipText": "Octoshark"
+        }, 
+        "tooltipText": "Octoshark"
     }, 
-    "id": "fkbmciahedfdhmffoocapbdomcbaagnj",
-  "name": "Octoshark"
+    "id": "fkbmciahedfdhmffoocapbdomcbaagnj", 
+    "name": "Octoshark"
 }
