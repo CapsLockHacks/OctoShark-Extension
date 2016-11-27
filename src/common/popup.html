@@ -65,9 +65,9 @@
 					  <td>${{:size_cost_per_month}} / mo</td>
 					</tr>
 			  </tbody>
-			</table> 
+			</table>
 				<button type="button" class="btn btn-primary" id="do_open_panel_{{:id}}">Digital Ocean Panel <span class="glyphicon glyphicon-new-window"></span></button>
-				<button type="button" class="btn btn-warning" id="do_restart_{{:id}}"><span class="glyphicon glyphicon-refresh"></span> Restart</button>					
+				<button type="button" class="btn btn-warning" id="do_restart_{{:id}}"><span class="glyphicon glyphicon-refresh"></span> Restart</button>
 				{{if status == "active"}}
 					<button type="button" class="btn btn-danger" id="do_power_off_{{:id}}"><span class="glyphicon glyphicon-off"></span> Power Off</button>		
 	  		{{else}}
@@ -142,34 +142,36 @@
 					<h3 class="panel-title nav nav-pills nav-stacked">Login</h3>
 				</div>
 				<div class="panel-body">
-					<form style='display: inline;' action='#'>
-						<label for="name" class="col-xs-2 col-form-label">Name</label>
-						<div class="col-xs-12">
-							<input type='text' id='name' class='form-control' style='display: inline;'><br>
+					<form style='display: inline;' action='#' data-toggle="validator" role="form">
+						<div class="form-group">
+							<label for="name" class="col-xs-2 col-form-label">Name</label>
+							<div class="col-xs-12">
+								<input type='text' id='name' class='form-control' required><br>
+							</div>
+							<label for="region" class="col-xs-2 col-form-label">Region</label>
+							<div class="col-xs-12">
+								<input type='text' id='region' class='form-control' required><br>
+							</div>
+							<label for="size" class="col-xs-2 col-form-label">Size</label>
+							<div class="col-xs-12">
+								<input type='text' id='size' class='form-control' required><br>
+							</div>
+							<label for="token" class="col-xs-2 col-form-label">Authtoken</label>
+							<div class="col-xs-12">
+								<input class='form-control' type='text' id="token" name='token' required><br>
+							</div>
+							<input type='hidden' id='giturl'><br>
+							<div class="col-xs-12">
+								<button id='submit' type="button" class="btn btn-success"><span class="glyphicon glyphicon-cloud-upload"></span> Deploy</button>
+
+							</div>
 						</div>
-						<label for="region" class="col-xs-2 col-form-label">Region</label>
-						<div class="col-xs-12">
-							<input type='text' id='region' class='form-control' style='display: inline;'><br>
-						</div>
-						<label for="size" class="col-xs-2 col-form-label">Size</label>
-						<div class="col-xs-12">
-							<input type='text' id='size' class='form-control' style='display: inline;'><br>
-						</div>
-						<label for="token" class="col-xs-2 col-form-label">Authtoken</label>
-						<div class="col-xs-12">
-							<input class='form-control' type='text' id="token" name='token '><br>
-						</div>
-						<input type='hidden' id='giturl'><br>
-						<div class="col-xs-12">
-							<button id='submit' type="button" class="btn btn-success">Deploy</button>
-							<br>
-						</div>
+
 					</form>
 				</div>
 			</div>
 		</div>
 	</div>
-
-
+</div>
 </body>
 </html>
